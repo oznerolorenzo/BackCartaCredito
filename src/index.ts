@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 const app = express();
+const port = process.env.PORT || 8080;
 const mongoURI = process.env.MONGO_URI!
 
 app.use(cors());
@@ -22,7 +23,7 @@ mongoose.connect(mongoURI)
   .then(_ => {
     console.log('Connected to db');
     app.listen(8080, () => {
-      console.log('Server listening on port 8080');
+      console.log(`Server listening on port ${port}`);
     });
   })
   .catch(err => {
