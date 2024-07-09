@@ -4,6 +4,7 @@ import morgan from "morgan";
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import creditCardRoutes from './api/routes/router-creditcard';
+import ricaricaRoutes from './api/routes/router-ricarica';
 import dotenv from 'dotenv'; 
 
 dotenv.config();
@@ -16,7 +17,12 @@ app.use(morgan("tiny"));
 app.use(bodyParser.json());
 app.use(express.static('public'))
 app.use('/api/credit-cards', creditCardRoutes);
+app.use('/api/ricariche', ricaricaRoutes);
 
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 mongoose.set('debug', true);
 mongoose.connect(mongoURI)
